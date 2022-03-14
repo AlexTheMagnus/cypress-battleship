@@ -1,0 +1,8 @@
+{
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "baseUrl": "http://es.battleship-game.org/",
+  "scrollBehavior": "center",
+  "viewportHeight": 768,
+  "viewportWidth": 1366,
+  "watchForFileChanges": false
+}
