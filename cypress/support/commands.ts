@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+/**
+ * @description Method to fire
+ * @param {number} coordinateX: Position to fire, coordinate x
+ * @param {number} coordinateY: Position to fire, coordinate y
+ */
+const fire = (coordinateX: number, coordinateY: number) =>
+  cy.get(`[data-x=${coordinateX}][data-y=${coordinateY}]`);
+
+export type Fire = typeof fire;
+Cypress.Commands.add('fire', fire);

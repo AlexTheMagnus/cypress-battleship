@@ -1,3 +1,4 @@
 it('works', () => {
-  cy.wrap(1).should('be.eq', 1);
+  cy.visit('/');
+  cy.url().should('be.eq', 'http://es.battleship-game.org/');
 });
