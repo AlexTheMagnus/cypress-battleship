@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 
 // ***********************************************************
 // This example support/index.js is processed and
@@ -16,7 +16,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands';
+import './commands.actions';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
