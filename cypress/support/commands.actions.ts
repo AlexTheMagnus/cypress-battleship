@@ -37,7 +37,7 @@ const fire = (
 ): Cypress.Chainable => {
   const log = Cypress.log({
     displayName: '💥FIRE💥',
-    message: [`Coordinates: x=${coordinateX} y={coordinateY}`],
+    message: [`Coordinates: x=${coordinateX} y=${coordinateY}`],
     autoEnd: false,
   });
 
