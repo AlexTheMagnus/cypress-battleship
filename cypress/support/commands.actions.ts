@@ -42,7 +42,7 @@ const fire = (
   });
 
   return cy
-    .get('.battlefield__self')
+    .get('.battlefield__rival')
     .find(`[data-x=${coordinateX}][data-y=${coordinateY}]`)
     .click()
     .then(() => log.end());
