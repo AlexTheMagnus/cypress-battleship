@@ -19,6 +19,7 @@ module.exports = {
     'prettier',
     'plugin:prettier/recommended',
   ],
+  ignorePatterns: ['*/node_modules/*', '*/build/*'],
   rules: {
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-var-requires': 'off',

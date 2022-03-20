@@ -1,0 +1,11 @@
+{
+  "mainPage": {
+    "selectEnemy": {
+      "friend": "amigo"
+    }
+  },
+  "inGame": {
+    "start": "Empieza el juego",
+    "yourTurn": "Su turno"
+  }
+}

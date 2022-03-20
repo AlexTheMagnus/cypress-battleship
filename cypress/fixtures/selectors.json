@@ -1,0 +1,14 @@
+{
+  "mainPage": {
+    "selectRival": {
+      "friend": ":nth-child(2) > .battlefield-start-choose_rival-variant-link"
+    },
+    "selectShipType": {
+      "rusian": ".battlefield-start-ships_type__default > .battlefield-start-ships_type-link"
+    },
+    "startButton": ".battlefield-start-button"
+  },
+  "inGame": {
+    "rivalBattleField": ".battlefield__rival"
+  }
+}

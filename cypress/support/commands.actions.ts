@@ -25,6 +25,8 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { Coordinate } from '../types/coordinate';
+import selectors from '../fixtures/selectors.json';
+const translations = require(`../fixtures/${Cypress.env('language')}.json`);
 
 /**
  * @description Method to fire
@@ -42,7 +44,7 @@ const fire = (
   });
 
   return cy
-    .get('.battlefield__rival')
+    .get(selectors.inGame.rivalBattleField)
     .find(`[data-x=${coordinateX}][data-y=${coordinateY}]`)
     .click()
     .then(() => log.end());
@@ -50,3 +52,35 @@ const fire = (
 
 export type Fire = typeof fire;
 Cypress.Commands.add('fire', fire);
+
+/**
+ * @description Method to fire
+ * @param {number} coordinateX: Position to fire, coordinate x
+ * @param {number} coordinateY: Position to fire, coordinate y
+ */
+const waitForRival = (): void => {
+  cy.log('Waiting for rival...');
+  cy.log('Open the game link an prepare your ships.');
+  cy.contains(translations.inGame.start, { timeout: 100000 }).should(
+    'be.visible',
+  );
+};
+
+export type WaitForRival = typeof waitForRival;
+Cypress.Commands.add('waitForRival', waitForRival);
+
+/**
+ * @description Method to fire
+ * @param {number} coordinateX: Position to fire, coordinate x
+ * @param {number} coordinateY: Position to fire, coordinate y
+ */
+const waitForYourTurn = (): void => {
+  cy.log('Waiting for rival...');
+  cy.log('Open the game link an prepare your ships.');
+  cy.contains(translations.inGame.start, { timeout: 100000 }).should(
+    'be.visible',
+  );
+};
+
+export type WaitForYourTurn = typeof waitForYourTurn;
+Cypress.Commands.add('waitForYourTurn', waitForYourTurn);

@@ -1,20 +1,21 @@
-const gameUrl = 'id75694470';
+import selectors from '../fixtures/selectors.json';
+// const { battleshipDomain } = Cypress.env();
+
+before(() => {
+  cy.log('Preparing the game...');
+  cy.visit('/');
+  cy.url().should('be.eq', Cypress.config().baseUrl);
+  cy.get(selectors.mainPage.selectRival.friend).click();
+  cy.get(selectors.mainPage.selectShipType.rusian).click();
+  cy.get(selectors.mainPage.startButton).click();
+  cy.waitForRival();
+});
 
 it('The game starts...', () => {
-  cy.visit(`/${gameUrl}`);
-  cy.url().should('be.eq', `http://es.battleship-game.org/${gameUrl}`);
-  cy.get('.battlefield-start-button').click();
-  cy.contains('Empieza el juego', { timeout: 100000 }).should('be.visible');
-  cy.contains('Su turno', { timeout: 10000, matchCase: false }).should(
-    'be.visible',
-  );
+  cy.waitForYourTurn();
   cy.fire(0, 0);
-  cy.contains('Su turno', { timeout: 10000, matchCase: false }).should(
-    'be.visible',
-  );
+  cy.waitForYourTurn();
   cy.fire(0, 1);
-  cy.contains('Su turno', { timeout: 10000, matchCase: false }).should(
-    'be.visible',
-  );
+  cy.waitForYourTurn();
   cy.fire(0, 2);
 });
