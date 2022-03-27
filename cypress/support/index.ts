@@ -20,3 +20,6 @@ import './commands.actions';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// Set the game webpage as baseUrl
+Cypress.config().baseUrl = Cypress.env('battleshipDomain');
