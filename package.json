@@ -22,7 +22,7 @@
   },
   "scripts": {
     "compile": "tsc -p cypress/tsconfig.json",
-    "cypress": "cypress open",
+    "cypress-battleship": "cypress open",
     "lint": "eslint ."
   }
 }
