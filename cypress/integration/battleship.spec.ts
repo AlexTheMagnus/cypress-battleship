@@ -1,12 +1,16 @@
 import selectors from '../fixtures/selectors.json';
-const { battleshipDomain } = Cypress.env();
+const { battleshipDomain, gameUrl } = Cypress.env();
 
 before(() => {
   cy.log('Preparing the game...');
   cy.visit('/');
-  cy.url().should('be.eq', battleshipDomain);
-  cy.get(selectors.mainPage.selectRival.friend).click();
-  cy.get(selectors.mainPage.selectShipType.rusian).click();
+  cy.url().should('contain', battleshipDomain + gameUrl);
+
+  if (!gameUrl) {
+    cy.get(selectors.mainPage.selectRival.friend).click();
+    cy.get(selectors.mainPage.selectShipType.rusian).click();
+  }
+
   cy.get(selectors.mainPage.startButton).click();
   cy.waitForRival();
 });
