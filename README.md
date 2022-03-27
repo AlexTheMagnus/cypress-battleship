@@ -19,7 +19,7 @@ Clone this repo and run `yarn` inside the project folder to install the dependen
 3. The Cypress script will create a game and it will wait you to be ready.
 4. Go to the game link displayed on the Cypress interface.
 5. Choose your boats position and click on the "Play" button.
-6. Enjoy your game.
+6. Enjoy your game :)
 
 ### Custom game config
 
@@ -27,7 +27,7 @@ Clone this repo and run `yarn` inside the project folder to install the dependen
 2. Set the game settings as you prefer.
 3. Choose your boats position and click on the "Play" button.
 4. Run `yarn cypress-battleship --env gameUrl=<YOUR_GAME_URL>` replacing `<YOUR_GAME_URL>` by your game URL.
-5. Enjoy your game.
+5. Enjoy your game :)
 
 ## Uninstall
 
