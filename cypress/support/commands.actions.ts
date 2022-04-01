@@ -26,7 +26,9 @@
 
 import { Coordinate } from '../types/coordinate';
 import selectors from '../fixtures/selectors.json';
-const translations = require(`../fixtures/${Cypress.env('language')}.json`);
+const translations = require(`../fixtures/translations/${Cypress.env(
+  'language',
+)}.json`);
 
 /**
  * @description Method to fire
