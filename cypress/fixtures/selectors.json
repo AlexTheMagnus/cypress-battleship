@@ -6,6 +6,7 @@
     "selectShipType": {
       "rusian": ".battlefield-start-ships_type__default > .battlefield-start-ships_type-link"
     },
+    "gameUrlInput" : ".battlefield-start-choose_rival-variant-url-input",
     "startButton": ".battlefield-start-button"
   },
   "inGame": {

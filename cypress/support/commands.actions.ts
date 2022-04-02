@@ -63,6 +63,9 @@ Cypress.Commands.add('fire', fire);
 const waitForRival = (): void => {
   cy.log('Waiting for rival...');
   cy.log('Open the game link an prepare your ships.');
+  cy.get(selectors.mainPage.gameUrlInput)
+    .invoke('val')
+    .then(value => cy.log(`${value}`));
   cy.contains(translations.inGame.start, { timeout: 100000 }).should(
     'be.visible',
   );
