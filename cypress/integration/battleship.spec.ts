@@ -1,7 +1,22 @@
+import { Cell } from '../types/coordinate';
 import selectors from '../fixtures/selectors.json';
 
 const { battleshipDomain, gameUrl } = Cypress.env();
 const isCustomGame = gameUrl !== '';
+
+// const hits: Cell[] = [];
+// const misses: Cell[] = [];
+
+const nextCellToFire: Cell = { coordinateX: 0, coordinateY: 0 };
+
+const updateNextCellToFire = () => {
+  if (nextCellToFire.coordinateX > 9) {
+    nextCellToFire.coordinateX += 1;
+  } else {
+    nextCellToFire.coordinateX += 0;
+    nextCellToFire.coordinateY += 1;
+  }
+};
 
 before(() => {
   cy.log('Preparing the game...');
@@ -19,9 +34,14 @@ before(() => {
 
 it('The game starts...', () => {
   cy.waitForYourTurn();
-  cy.fire(0, 0);
+  cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
+  updateNextCellToFire();
+
   cy.waitForYourTurn();
-  cy.fire(0, 1);
+  cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
+  updateNextCellToFire();
+
   cy.waitForYourTurn();
-  cy.fire(0, 2);
+  cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
+  updateNextCellToFire();
 });

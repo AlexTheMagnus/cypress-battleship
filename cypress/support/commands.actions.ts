@@ -79,10 +79,24 @@ Cypress.Commands.add('waitForRival', waitForRival);
 const waitForYourTurn = (): void => {
   cy.log('Waiting for rival...');
   cy.log('Open the game link an prepare your ships.');
-  cy.contains(translations.inGame.start, { timeout: 100000 }).should(
-    'be.visible',
-  );
+  cy.checkNotification(selectors.inGame.notifications.moveOn);
 };
 
 export type WaitForYourTurn = typeof waitForYourTurn;
 Cypress.Commands.add('waitForYourTurn', waitForYourTurn);
+
+/**
+ * @description Method to fire
+ * @param {number} coordinateX: Position to fire, coordinate x
+ * @param {number} coordinateY: Position to fire, coordinate y
+ */
+const checkNotification = (notification: string): void => {
+  cy.get(selectors.inGame.notificationsContainer)
+    .find(notification, {
+      timeout: 1000000,
+    })
+    .should('not.have.css', 'display', 'none');
+};
+
+export type CheckNotification = typeof checkNotification;
+Cypress.Commands.add('checkNotification', checkNotification);

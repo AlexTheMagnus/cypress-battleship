@@ -9,6 +9,14 @@
     "startButton": ".battlefield-start-button"
   },
   "inGame": {
+    "notificationsContainer": ".notifications",
+    "notifications": {
+      "init": ".notification__init",
+      "connectToServer": ".notification__connect-to-server",
+      "waitForRival": ".notification__waiting-for-rival",
+      "gameStarted": ".notification__game-started-move-on",
+      "moveOn": ".notification__move-on"
+    },
     "rivalBattleField": ".battlefield__rival"
   }
 }

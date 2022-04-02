@@ -5,7 +5,6 @@
     "gameUrl": "",
     "language": "es"
   },
-  "scrollBehavior": false,
   "viewportHeight": 768,
   "viewportWidth": 1366,
   "watchForFileChanges": false
