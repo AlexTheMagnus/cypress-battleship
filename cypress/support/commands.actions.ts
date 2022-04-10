@@ -26,6 +26,7 @@
 
 import { Coordinate } from '../types/coordinate';
 import selectors from '../fixtures/selectors.json';
+import { isNotificationVisible } from './utils';
 // const translations = require(`../fixtures/translations/${Cypress.env(
 //   'language',
 // )}.json`);
@@ -68,12 +69,8 @@ const waitForRival = (): void => {
     .then(value => cy.log(`${value}`));
 
   expect(
-    Cypress.$(selectors.inGame.notifications.gameStartedMoveOn).css(
-      'display',
-    ) !== 'none' ||
-      Cypress.$(selectors.inGame.notifications.gameStartedMoveOff).css(
-        'display',
-      ) !== 'none',
+    isNotificationVisible(selectors.inGame.notifications.gameStartedMoveOn) ||
+      isNotificationVisible(selectors.inGame.notifications.gameStartedMoveOff),
   ).eq(true);
 };
 
