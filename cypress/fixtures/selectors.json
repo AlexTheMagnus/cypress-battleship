@@ -15,8 +15,11 @@
       "init": ".notification__init",
       "connectToServer": ".notification__connect-to-server",
       "waitForRival": ".notification__waiting-for-rival",
-      "gameStarted": ".notification__game-started-move-on",
-      "moveOn": ".notification__move-on"
+      "gameStartedMoveOn": ".notification__game-started-move-on",
+      "gameStartedMoveOff": "notification__game-started-move-off",
+      "moveOn": ".notification__move-on",
+      "gameOverWin": ".notification__game-over-win",
+      "gameOverLose": ".notification__game-over-lose"
     },
     "rivalBattleField": ".battlefield__rival"
   }

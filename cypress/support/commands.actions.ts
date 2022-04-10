@@ -26,9 +26,9 @@
 
 import { Coordinate } from '../types/coordinate';
 import selectors from '../fixtures/selectors.json';
-const translations = require(`../fixtures/translations/${Cypress.env(
-  'language',
-)}.json`);
+// const translations = require(`../fixtures/translations/${Cypress.env(
+//   'language',
+// )}.json`);
 
 /**
  * @description Method to fire
@@ -66,9 +66,15 @@ const waitForRival = (): void => {
   cy.get(selectors.mainPage.gameUrlInput)
     .invoke('val')
     .then(value => cy.log(`${value}`));
-  cy.contains(translations.inGame.start, { timeout: 100000 }).should(
-    'be.visible',
-  );
+
+  expect(
+    Cypress.$(selectors.inGame.notifications.gameStartedMoveOn).css(
+      'display',
+    ) !== 'none' ||
+      Cypress.$(selectors.inGame.notifications.gameStartedMoveOff).css(
+        'display',
+      ) !== 'none',
+  ).eq(true);
 };
 
 export type WaitForRival = typeof waitForRival;
@@ -80,9 +86,9 @@ Cypress.Commands.add('waitForRival', waitForRival);
  * @param {number} coordinateY: Position to fire, coordinate y
  */
 const waitForYourTurn = (): void => {
-  cy.log('Waiting for rival...');
-  cy.log('Open the game link an prepare your ships.');
+  cy.log('Rival turn...');
   cy.checkNotification(selectors.inGame.notifications.moveOn);
+  cy.log('Your turn.');
 };
 
 export type WaitForYourTurn = typeof waitForYourTurn;
@@ -96,7 +102,7 @@ Cypress.Commands.add('waitForYourTurn', waitForYourTurn);
 const checkNotification = (notification: string): void => {
   cy.get(selectors.inGame.notificationsContainer)
     .find(notification, {
-      timeout: 1000000,
+      timeout: 100000,
     })
     .should('not.have.css', 'display', 'none');
 };

@@ -10,10 +10,10 @@ const isCustomGame = gameUrl !== '';
 const nextCellToFire: Cell = { coordinateX: 0, coordinateY: 0 };
 
 const updateNextCellToFire = () => {
-  if (nextCellToFire.coordinateX > 9) {
+  if (nextCellToFire.coordinateX < 9) {
     nextCellToFire.coordinateX += 1;
   } else {
-    nextCellToFire.coordinateX += 0;
+    nextCellToFire.coordinateX = 0;
     nextCellToFire.coordinateY += 1;
   }
 };
@@ -33,15 +33,15 @@ before(() => {
 });
 
 it('The game starts...', () => {
-  cy.waitForYourTurn();
-  cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
-  updateNextCellToFire();
+  if (isCustomGame) {
+    cy.checkNotification(selectors.inGame.notifications.gameStartedMoveOn);
+    cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
+    updateNextCellToFire();
+  }
 
-  cy.waitForYourTurn();
-  cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
-  updateNextCellToFire();
-
-  cy.waitForYourTurn();
-  cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
-  updateNextCellToFire();
+  for (let i = 0; i < 10; i++) {
+    cy.waitForYourTurn();
+    cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
+    updateNextCellToFire();
+  }
 });
