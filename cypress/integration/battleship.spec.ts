@@ -1,5 +1,4 @@
 import { Cell } from '../types/coordinate';
-import { isNotificationVisible } from '../support/utils';
 import selectors from '../fixtures/selectors.json';
 
 const { battleshipDomain, gameUrl } = Cypress.env();
@@ -19,6 +18,12 @@ const updateNextCellToFire = () => {
   }
 };
 
+// TODO use this as condition to the final recurse (not working with while)
+// const hasGameFinished = (): boolean =>
+//   isNotificationVisible(selectors.inGame.notifications.gameOverLose)
+//     ? false
+//     : true;
+
 before(() => {
   cy.log('Preparing the game...');
   cy.visit('/');
@@ -34,7 +39,7 @@ before(() => {
 });
 
 it('The game starts...', () => {
-  if (isCustomGame) {
+  if (!isCustomGame) {
     cy.checkNotification(selectors.inGame.notifications.gameStartedMoveOn);
     cy.fire(nextCellToFire.coordinateX, nextCellToFire.coordinateY);
     updateNextCellToFire();
