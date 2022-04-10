@@ -25,8 +25,8 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { Coordinate } from '../types/coordinate';
-import selectors from '../fixtures/selectors.json';
 import { isNotificationVisible } from './utils';
+import selectors from '../fixtures/selectors.json';
 // const translations = require(`../fixtures/translations/${Cypress.env(
 //   'language',
 // )}.json`);

@@ -1,4 +1,5 @@
 import { Cell } from '../types/coordinate';
+import { isNotificationVisible } from '../support/utils';
 import selectors from '../fixtures/selectors.json';
 
 const { battleshipDomain, gameUrl } = Cypress.env();
