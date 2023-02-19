@@ -92,9 +92,8 @@ export type WaitForYourTurn = typeof waitForYourTurn;
 Cypress.Commands.add('waitForYourTurn', waitForYourTurn);
 
 /**
- * @description Method to fire
- * @param {number} coordinateX: Position to fire, coordinate x
- * @param {number} coordinateY: Position to fire, coordinate y
+ * @description Method to verify the notification displayed inside the notifications container
+ * @param {notification} string: Id of the notification to verify
  */
 const checkNotification = (notification: string): void => {
   cy.get(selectors.inGame.notificationsContainer)
